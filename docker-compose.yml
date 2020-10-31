@@ -1,0 +1,17 @@
+version: "3.3"
+services:
+        web:
+                build: .
+                ports:
+                        - "5001:5000"
+                volumes: 
+                        - ./Shared:/SourceCode
+        redis:
+                image: "redis:alpine"
+
+networks:
+        default:
+                driver: "bridge"
+                ipam:
+                        config:
+                                - subnet: 172.16.0.0/24
